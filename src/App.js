@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import axios from "axios";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ShowChannel></ShowChannel>
     </div>
   );
+}
+function ShowChannel() {
+  return (
+    <div>
+      <div>테스트 페이지</div>
+      <button onClick={test}>버전 확인</button>
+    </div>
+  );
+
+  function test() {
+    window.api.receive("app_version", (arg) => {
+      alert(`현재 버전: v ${arg.version}`);
+    });
+    // window.api.send("toMain", "here is renderer");
+    // window.ipcRenderer.send("test", "test 입니다.");
+  }
 }
 
 export default App;
